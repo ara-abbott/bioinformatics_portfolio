@@ -1,0 +1,96 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+
+@author: araabbott
+"""
+
+### 1 ###
+print("PART 1: This program prints the number of amino acids in a polypeptide sequence, adds an amino acid, outputs the amino acid from the user's input, and reverses a section of the sequence per the user's input.")
+
+# Define an array that contains the amino acids in the right order.  Print in one line
+
+polypeptide = ["Phe", "Val", "Asn", "Gln", "His", "Leu", "Cys", "Gly", "Ser"]; print("\nPolypeptide: ", polypeptide)
+
+# Determine the number of amino acids and print
+aa_num = len(polypeptide)
+print("\nNumber of amino acids: ", aa_num)
+
+# Add the amino acid "His" to the end of the polypeptide.  Print resulting array in one line
+polypeptide.append("His")
+print("\nResult after adding His: ", polypeptide)
+
+# Ask the user for a number between 1 and the number of amino acids in the polypeptide.
+user_num = int(input("\nPlease enter a number between 1 and {}: ".format(len(polypeptide))))
+
+## Print the amino acid in that position
+for a in polypeptide:
+    user_aa = polypeptide[user_num - 1]
+    print("\nAmino acid in position {}: ".format(user_num), user_aa)
+    break
+
+# Create an inversion
+## Get 2 positions in the sequence from the user and invert the sequence of the amino acids between them
+## Print the array before and after the conversion
+user_pos1 = int(input("\n\nEnter first inverse position number (1 to {}): ".format(len(polypeptide))))
+
+user_pos2 = int(input("\nEnter second inverse position number (greater than last input): "))
+
+print("\nOriginal sequence: ", polypeptide) # Before the conversion
+
+for a in range(0, len(polypeptide)):
+    pos1 = user_pos1 - 1
+    forward_seq = polypeptide[pos1:user_pos2] #sequence of the user's input
+    reverse_seq = forward_seq[::-1] # reverse of the input sequence
+    end_seq = len(polypeptide)
+    print("\nUser input: ", forward_seq)
+    print("\nReversed user input: ", polypeptide[0:pos1] + reverse_seq + polypeptide[user_pos2:end_seq]) #after conversion
+    break
+
+
+### 2 ###
+print("\n\nPART 2: This program outputs an amino acid in the position of the user's input and returns an error if the input is outside the range.")
+
+# Store amino acids into an array
+array2 = ("Trp", "Arg", "Liu", "Ilu", "Asp")
+print("\nArray: ", array2)
+
+# Prompt the user to give a number from 1 to the length of the array
+user_input2 = int(input("\nEnter a number from 1 to {}: ".format(len(array2))))
+aa_user2 = user_input2 - 1
+
+
+# If the user gives a number NOT in the range required, print out an error message
+
+for i in range(0, len(array2)):
+    if user_input2 in range(1,5):
+        # Print the amino acid in that position
+        print("This is the amino acid in position {}: ".format(user_input2), array2[aa_user2])
+        break
+    else:
+        print("\nError: Input not in range.")
+
+
+
+### 3 ###
+print("\n\nPART 3: This program appends, removes, and inserts a nucleotide in a list.")
+
+# Store DNA sequence into an array
+array3 = list("CCGTAACGC")
+print("\nOriginal array: ", array3)
+
+# Add a T to the end of the array
+array3.append("T")
+
+# Print the array
+print("\nAfter adding T to the end: ", array3)
+
+# Remove the 1st element of the array and print it
+array3.remove(array3[0])
+print("\nAfter removing the first element: ", array3)
+
+# Add T to the beginning of the array and print
+array3.insert(0,"T")
+print("\nAfter adding T to the beginning: ", array3)
+
+
